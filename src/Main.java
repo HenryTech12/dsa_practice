@@ -1,14 +1,18 @@
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Main {
     static int count = 0;
 
     public static void main(String[] args) {
 
-        System.out.println(firstNonRepeatingLetter("sTress"));
 
+        String[] words = new String[]{"Sun", "number", "sun"};
+        int d = 48;
+        char a =(char) d;
+        System.out.println(a);
     }
 
     public int findMultipleOf3or5(int number) {
@@ -41,6 +45,84 @@ public class Main {
 
         return ((result.size() > 0) ? result.get(0) : "");
 
+    }
+
+    public static int findIt(int[] a) {
+        List<Integer> data = new ArrayList<>();
+        for(int i = 0; i < a.length; i++) {
+            int start = a[i];
+            int freq = 0;
+            for(int j = 0; j < a.length; j++) {
+                if(start == a[j]) {
+                    freq++;
+                }
+            }
+            if(freq%2 != 0) {
+                data.add(start);
+            }
+        }
+
+        return data.get(0);
+    }
+
+    //validate a string by checking if the reversed last substring based on number matches the next words of first two letters of substring in the array
+    public static boolean validate(String[] words, int number) {
+        // Have fun ;D
+
+        boolean check = true;
+        Set<String> seen = new HashSet<>();
+        for (String w : words) {
+            if (w == null || !seen.add(w.toLowerCase())) {
+                return false; // duplicate or null word
+            }
+        }
+
+        if(words.length >=2 ) {
+            if (number > 0) {
+                for (int i = 0; i < words.length - 1; i++) {
+                    if (words[i].length() < number || words[i + 1].length() < number) {
+                        check = false;
+                        break;
+                    }
+                    StringBuilder lastNumLetters = new StringBuilder(words[i].substring(words[i].length() - number));
+                    StringBuilder lastRev = lastNumLetters.reverse();
+                    check = lastRev.toString().equalsIgnoreCase(words[i + 1].substring(0, number));
+                    if (!check) {
+                        break;
+                    }
+                }
+            } else {
+                check = false;
+            }
+        }
+        else {
+            check = false;
+        }
+        return check;
+    }
+
+
+    //check if a string is alphanumeric
+    public static boolean alphanumeric(String s){
+
+        boolean check= false;
+        if(s.length() > 1) {
+            if(s.split(" ").length <= 1) {
+                if(!s.contains("_")) {
+                    for(int i = 0; i < s.length(); i++) {
+                        char c = s.charAt(i);
+                        if(('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z') || ('0' <= c && c <= '9')) {
+                            check = true;
+                        } else {
+                            check = false;
+                            break;
+                        }
+
+                    }
+                }
+            }
+        }
+        return check;
     }
 
 
