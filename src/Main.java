@@ -1,6 +1,4 @@
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -9,7 +7,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        System.out.println(firstNonRepeatingLetter("moon-men"));
+        System.out.println(firstNonRepeatingLetter("sTress"));
 
     }
 
@@ -26,10 +24,23 @@ public class Main {
     }
 
     public static String firstNonRepeatingLetter(String s){
-        // Add your code here
+        Map<String, Integer> freq = new HashMap<>();
 
+        for (String ch : s.split("")) {
+            ch = ch.toLowerCase();   // 👈 normalize case
+            freq.put(ch, freq.getOrDefault(ch, 0) + 1);
+        }
 
-        return null;
+        List<String> result = new ArrayList<>();
+
+        for (String ch : s.split("")) {
+            if (freq.get(ch.toLowerCase()) == 1) {
+                result.add(ch); // keep original case if you want
+            }
+        }
+
+        return ((result.size() > 0) ? result.get(0) : "");
+
     }
 
 
