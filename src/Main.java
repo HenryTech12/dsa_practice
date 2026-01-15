@@ -9,10 +9,9 @@ public class Main {
     public static void main(String[] args) {
 
 
-        String[] words = new String[]{"Sun", "number", "sun"};
-        int d = 48;
-        char a =(char) d;
-        System.out.println(a);
+        Main m = new Main();
+        int[] arr = new int[]{1,3,5,6};
+        System.out.println(m.searchInsert(arr,2));
     }
 
     public int findMultipleOf3or5(int number) {
@@ -125,5 +124,18 @@ public class Main {
         return check;
     }
 
+
+    public static String regexBelow(long n) {
+
+        return "[1-9]+" + n;
+    }
+
+    public int searchInsert(int[] nums, int target) {
+        int index = Arrays.binarySearch(nums,target);
+        if(index < 0){
+            index = Math.abs((index + 1));
+        }
+        return index;
+    }
 
 }
