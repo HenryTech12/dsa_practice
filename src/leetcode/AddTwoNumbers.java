@@ -6,9 +6,9 @@ public class AddTwoNumbers {
     public static void main(String[] args) {
 
         Solution s = new Solution();
-        ListNode l1 =  new ListNode(2,new ListNode(4, new ListNode(3)));
-        ListNode l2 = new ListNode(5, new ListNode(6, new ListNode(4)));
-        s.addTwoNumbers(l1,l2);
+        ListNode l1 =  new ListNode(0);
+        ListNode l2 = new ListNode(0);
+        System.out.println(s.addTwoNumbers(l1,l2));
     }
 }
 
@@ -37,10 +37,19 @@ class Solution {
         }
         int sum = Integer.valueOf(firstNum) + Integer.valueOf(secondNum);
         String[] data = new StringBuilder(""+sum).reverse().toString().split("");
-
-
-
-        return l1;
+        ListNode head = null;
+        ListNode tail = null;
+        for(int i =0; i < data.length; i++) {
+            ListNode node = new ListNode(Integer.parseInt(data[i]));
+            if (head == null) {
+                head = tail = node;
+            }
+            if(data.length > 1) {
+                tail.next = node;
+                tail = node;
+            }
+        }
+        return head;
     }
 }
 
