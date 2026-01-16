@@ -1,4 +1,5 @@
 import java.util.*;
+import java.util.function.IntBinaryOperator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
@@ -10,8 +11,7 @@ public class Main {
 
 
         Main m = new Main();
-        int[] arr = new int[]{1,3,5,6};
-        System.out.println(m.searchInsert(arr,2));
+        System.out.println(m.addBinary("1010","1011"));
     }
 
     public int findMultipleOf3or5(int number) {
@@ -136,6 +136,15 @@ public class Main {
             index = Math.abs((index + 1));
         }
         return index;
+    }
+
+    public String addBinary(String a, String b) {
+        int sum = 0;
+        for(int i = a.length()-1; i >= 0; i--)
+            sum += (Integer.parseInt(""+a.charAt(a.length()-i-1)) * ((int) Math.pow(2,i)));
+        for(int i = b.length()-1; i >= 0; i--)
+            sum += (Integer.parseInt(""+b.charAt(b.length()-i-1)) * ((int) Math.pow(2,i)));
+        return Integer.toBinaryString(sum);
     }
 
 }
