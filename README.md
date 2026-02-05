@@ -1,2 +1,2 @@
 # dsa_practice
-Solve 1000 leetcode problems !!!
+Solve a lot of leetcode problems !!!
