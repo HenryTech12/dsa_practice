@@ -1,2 +1,2 @@
 # dsa_practice
-Solve a lot of leetcode problems !!!
+Solve a lot of leetcode problems
